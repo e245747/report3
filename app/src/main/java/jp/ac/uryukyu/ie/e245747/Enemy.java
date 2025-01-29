@@ -8,11 +8,49 @@ package jp.ac.uryukyu.ie.e245747;
  *  boolean dead; //敵の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
-public class Enemy {
-    public String name;
-    public int hitPoint;
-    public int attack;
-    public boolean dead;
+ public class Enemy {
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
+
+    public String getName(){
+        return name;
+    }
+    // setter メソッド: name を設定する
+    public void setName(String name) {
+        this.name = name;
+    }    
+    //getterメソッド：hitPointを取得する
+    public int getHitPoint(){
+        return hitPoint;
+    }
+
+    // setter メソッド: hitPointを設定する
+    public void setHitPoint(int hitPoint){
+        this.hitPoint = hitPoint;
+    }
+
+    //getterメソッド：attackを取得する
+    public int getAttack(){
+        return attack;
+    }
+
+    // setter メソッド: attack を設定する
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    //getterメソッド：deadを取得する
+    public boolean getDead(){
+        return dead;
+    }
+
+    // setter メソッド: dead を設定する
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -36,7 +74,7 @@ public class Enemy {
     public void attack(Hero hero){
         if (hitPoint > 0){
             int damage = (int)(Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.name, damage);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.getName(), damage);
             hero.wounded(damage);
         }
     }
