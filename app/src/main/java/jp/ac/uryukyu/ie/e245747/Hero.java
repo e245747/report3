@@ -8,7 +8,7 @@ package jp.ac.uryukyu.ie.e245747;
  *  boolean dead; //敵の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
-public class Hero {
+public class Hero extends LivingThing{
     private String name;
     private int hitPoint;
     private int attack;
@@ -59,23 +59,20 @@ public class Hero {
      * @param attack ヒーローの攻撃力
      */
     public Hero (String name, int maximumHP, int attack) {
-        this.name = name;
-        hitPoint = maximumHP;
-        this.attack = attack;
-        dead = false;
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
+        super(name, maximumHP, attack);
+        //System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
     /**
      * Enemyへ攻撃するメソッド。
      * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
      * @param e 攻撃対象
-     */
+     
     public void attack(Enemy e){
         int damage = (int)(Math.random() * attack);
         System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
         e.wounded(damage);
-    }
+    }*/
 
     /**
      * 自身へ攻撃されたときのダメージ処理をするメソッド。
@@ -83,10 +80,6 @@ public class Hero {
      * @param damage 受けたダメージ
      */
     public void wounded(int damage){
-        hitPoint -= damage;
-        if( hitPoint < 0 ) {
-            dead = true;
             System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
         }
     }
-}
